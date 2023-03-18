@@ -1,0 +1,58 @@
+﻿<Page x:Class="QuestionnaireOleshkina.EnterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuestionnaireOleshkina"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EnterPage">
+
+    <Grid Background="Wheat">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock  Grid.Column="1"
+                    FontSize="34"
+                    HorizontalAlignment="Center"
+                    FontWeight="Heavy"
+                    
+                    >Вход в систему</TextBlock>
+        
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center"
+                    >
+            <TextBlock HorizontalAlignment="Center"
+                       Foreground="SaddleBrown"
+                       FontSize="40"
+                       >Логин</TextBlock>
+            <TextBox Background="Wheat"
+                     Name="loginTextBox"
+                     ></TextBox>
+            <Label></Label>
+            <TextBlock HorizontalAlignment="Center"
+                       Foreground="SaddleBrown"
+                       FontSize="40"
+                >
+                Пароль</TextBlock>
+            <PasswordBox Background="Wheat"
+                         Name="loginPassword"
+                         ></PasswordBox>
+            
+            
+            <Label Height="100"></Label>
+            
+            
+            <TextBlock HorizontalAlignment="Center" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
+                
+                >Далее</TextBlock>
+            
+            
+        </StackPanel>
+        
+    </Grid>
+</Page>

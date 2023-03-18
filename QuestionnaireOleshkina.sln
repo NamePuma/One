@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionnaireOleshkina", "QuestionnaireOleshkina\QuestionnaireOleshkina.csproj", "{9046CCBB-50C0-4DEB-A5F9-8F3BDEC5C5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connechn", "Connechn\Connechn.csproj", "{19A27CAC-740B-43F7-A1AB-1BD8C1F2E6A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9046CCBB-50C0-4DEB-A5F9-8F3BDEC5C5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9046CCBB-50C0-4DEB-A5F9-8F3BDEC5C5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9046CCBB-50C0-4DEB-A5F9-8F3BDEC5C5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9046CCBB-50C0-4DEB-A5F9-8F3BDEC5C5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19A27CAC-740B-43F7-A1AB-1BD8C1F2E6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A27CAC-740B-43F7-A1AB-1BD8C1F2E6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A27CAC-740B-43F7-A1AB-1BD8C1F2E6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A27CAC-740B-43F7-A1AB-1BD8C1F2E6A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {505C78B5-9D53-41F2-AF5D-1160C2C84619}
+	EndGlobalSection
+EndGlobal

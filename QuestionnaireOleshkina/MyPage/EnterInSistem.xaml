@@ -1,0 +1,254 @@
+﻿<Page x:Class="QuestionnaireOleshkina.EnterInSistem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuestionnaireOleshkina"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EnterInSistem"
+      >
+
+    <Grid Background="Wheat">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="26"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Image Name="imgLion" 
+               Grid.ColumnSpan="6" 
+               Source="C:\Users\student\source\repos\QuestionnaireOleshkina\QuestionnaireOleshkina\MyImg\lion.jpg"  
+               Stretch="Fill" 
+               Visibility="Hidden" 
+               
+               ></Image>
+
+
+
+
+        <Border Margin="17 0 0 0 " 
+                Grid.Column="3" 
+                HorizontalAlignment="Center" 
+                BorderBrush="Black" 
+                BorderThickness="1"
+                
+                ></Border>
+
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Grid.Column="4" 
+                    Grid.ColumnSpan="2"
+                    Name="stackPanelNameQuetionniry">
+
+            <TextBlock FontSize="30" 
+                       FontWeight="Black"
+
+                 >Создание Анкеты</TextBlock>
+            <TextBox Background="Wheat"
+                     FontSize="25"
+                     Name="textBoxForName"
+                     ></TextBox>
+            <Button Click="Button_Click_1"
+                
+                >Добавить</Button>
+
+        </StackPanel>
+
+
+        <ScrollViewer Grid.ColumnSpan="3"  
+                      VerticalScrollBarVisibility="Auto"
+                      >
+            <StackPanel>
+                <TextBlock FontWeight="Black"
+                           Name="addQuestionnire"
+                    >Добавлные анкеты</TextBlock>
+                <ListBox Background="Wheat"
+                         Height="434"
+                         ScrollViewer.CanContentScroll="False"
+                         ItemsSource="{Binding ForShow}"
+                         SelectionChanged="ListBox_SelectionChanged"
+                         Name="listiForQuestionnaire"
+                         
+                         
+                         >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Label Content="{Binding Text}"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        
+
+        <StackPanel Name="stackPanelEditQuesrions"
+                        Visibility="Hidden"
+            Grid.Column="4">
+
+            <TextBlock  FontWeight="Black"
+                >Изменить</TextBlock>
+
+            <Label Margin="5"
+                >Текст вопроса</Label>
+
+            <TextBox Background="Wheat"
+                     ></TextBox>
+
+            <Label Margin="5"
+                   >Позиция в анкете</Label>
+
+            <TextBox Background="Wheat"
+                ></TextBox>
+
+            <Label Height="14"
+                   ></Label>
+
+            <CheckBox Background="Wheat"
+                >Включить фильтр</CheckBox>
+
+            <Label Margin="5"
+                >Текст варианта ответа</Label>
+
+            <TextBox Background="Wheat"
+                ></TextBox>
+
+            <Label Height="14"
+                ></Label>
+
+            <ListBox Background="Wheat"
+                Height="80"
+                ></ListBox>
+
+            <Label Height="20"
+                ></Label>
+
+            <Button Background="Wheat"
+                    Margin="5"
+                >Добавить вариант</Button>
+
+            <Button Background="Wheat"
+                    Margin="5"
+                >Удалить вариант</Button>
+
+            <Button Background="Wheat"
+                    Margin="5"
+                >Сохранить изменения</Button>
+
+            <Button Background="Wheat"
+                    Margin="5"
+                    Click="Button_Click_3"
+                >Удалить вопрос</Button>
+
+        </StackPanel>
+        <StackPanel Name="stackPanelCreateQuesrion"
+                    Visibility="Hidden"
+            Grid.Column="5">
+
+            <TextBlock
+                
+                FontWeight="Bold"
+                >Создать новый</TextBlock>
+
+            <Label 
+                Margin="5"
+                >Текст вопроса</Label>
+
+            <TextBox Name="textOnCreateQuestions"
+                Background="Wheat">
+
+            </TextBox>
+            <Label
+                Margin="5"    
+                >Тип ответа</Label>
+
+            <ComboBox Name="comboBoxOnTypeQuestions" 
+                >
+                <ComboBoxItem Content="TextBox"/>
+                <ComboBoxItem Content="ComboBox"/>
+                <ComboBoxItem Content="RadioButon"/>
+
+            </ComboBox>
+
+            <Label
+                Margin="5"
+                >Позиция в анкете</Label>
+
+            <TextBox Name="textBoxOnPositionQuestions"
+                Background="Wheat"
+                ></TextBox>
+
+            <Label></Label>
+
+            <CheckBox Name="checkBoxOnUsingFilter"
+                Background="Wheat"      
+                      >Включить фильтр</CheckBox>
+
+            <Line Margin="0 2 0 0" 
+                  X1="0" X2="190"  
+                  StrokeThickness="1" 
+                  StrokeDashArray="2 2" 
+                  Stroke="Black"
+                  
+                  ></Line>
+
+
+
+            <Label
+                Height="13"
+                ></Label>
+
+            <Button 
+                Background="Wheat"
+                HorizontalAlignment="Center"   
+                Width="120" Click="Button_Click"
+                    >Создать вопрос</Button>
+
+            <Label></Label>
+
+            <Label 
+                Margin="5"
+                >Текст варианта ответа</Label>
+
+            <TextBox Name="PossibleAnswer"
+                Background="Wheat"
+                ></TextBox>
+
+            <Label></Label>
+
+            <ListBox Name="listBoxForQuestions" 
+                Background="Wheat"
+                Height="80"
+                ItemsSource="{Binding createQuestions}" 
+                SelectionChanged="listBoxForQuestions_SelectionChanged"
+                     
+                     >
+
+            </ListBox>
+
+            <Label
+                ></Label>
+
+            <Button Background="Wheat"
+                    Click="Button_Click_2"
+                    >Добавить вариант</Button>
+
+            <Label></Label>
+
+            <CheckBox Click="CheckBox_Click"
+                      Background="Wheat"
+                >Добавить фон</CheckBox>
+        </StackPanel>
+        
+        
+    
+
+    </Grid>
+</Page>
