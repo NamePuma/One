@@ -87,9 +87,9 @@
             </StackPanel>
         </ScrollViewer>
 
-        
 
-        <StackPanel Name="stackPanelEditQuesrions"
+
+        <StackPanel DataContext="{Binding ElementName=listiForQuestionnaire, Path=SelectedItem}" Name="stackPanelEditQuesrions"
                         Visibility="Hidden"
             Grid.Column="4">
 
@@ -99,13 +99,17 @@
             <Label Margin="5"
                 >Текст вопроса</Label>
 
-            <TextBox Background="Wheat"
+            <TextBox Text="{Binding Text}" Background="Wheat"
+                     Name="textForChangeQuestion"
                      ></TextBox>
 
             <Label Margin="5"
                    >Позиция в анкете</Label>
 
             <TextBox Background="Wheat"
+                     Text="{Binding position}"
+                    Name="textForChangePosition"
+                     
                 ></TextBox>
 
             <Label Height="14"
@@ -118,12 +122,16 @@
                 >Текст варианта ответа</Label>
 
             <TextBox Background="Wheat"
+                     Name="possibleAnswerEdit"
                 ></TextBox>
 
             <Label Height="14"
                 ></Label>
 
             <ListBox Background="Wheat"
+                     Name="listForChange"
+                     SelectionChanged="listForChange_SelectionChanged"
+                     ItemsSource="{Binding PossibleAnswer}"
                 Height="80"
                 ></ListBox>
 
@@ -132,14 +140,17 @@
 
             <Button Background="Wheat"
                     Margin="5"
+                    Click="Button_Click_6"
                 >Добавить вариант</Button>
 
             <Button Background="Wheat"
                     Margin="5"
+                    Click="Button_Click_5"
                 >Удалить вариант</Button>
 
             <Button Background="Wheat"
                     Margin="5"
+                    Click="Button_Click_4"
                 >Сохранить изменения</Button>
 
             <Button Background="Wheat"

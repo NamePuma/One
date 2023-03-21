@@ -226,7 +226,20 @@ namespace Connechn
 
         }
 
+        public void UpdateQuestion(int id, CreateQuestion createQuestion)
+        {
+            string json = JsonConvert.SerializeObject(createQuestion);
 
+            NpgsqlCommand npgsqlCommand = autongsqlConnection.CreateCommand();
+
+            npgsqlCommand.CommandText = "Update \"Question \" set  \"Content\" = @json where id = @id";
+            npgsqlCommand.Parameters.AddWithValue("@json", NpgsqlDbType.Jsonb,json);
+            npgsqlCommand.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, id);
+            npgsqlCommand.ExecuteNonQuery();
+
+
+
+        }
 
 
 

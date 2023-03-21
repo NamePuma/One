@@ -50,6 +50,8 @@ namespace QuestionnaireOleshkina
         public ObservableCollection<Receive> ForShow { get; set; }
 
         public ObservableCollection<CreateQuestion> ShowQuestion { get; set; }
+
+        public static CreateQuestion CreateQuestion { get; set; }
         private enum forImageLion
         {
             visa,
@@ -150,6 +152,19 @@ namespace QuestionnaireOleshkina
 
 
 
+            textOnCreateQuestions.Text = string.Empty;
+
+            comboBoxOnTypeQuestions.Text = string.Empty;
+
+            textBoxOnPositionQuestions.Text = string.Empty;
+
+            listBoxForQuestions.ItemsSource = null;
+
+            PossibleAnswer.Text = string.Empty;
+
+
+
+
         }
 
 
@@ -245,10 +260,28 @@ namespace QuestionnaireOleshkina
 
 
 
+
                 CreateQuestion receiveForUpdate = (CreateQuestion)list.SelectedItem;
 
                 ConnectWithDataBase.IdQ = receiveForUpdate.Id;
                 ConnectWithDataBase.Index = list.SelectedIndex;
+
+
+                //textForChangeQuestion.Text = receiveForUpdate.Text;
+
+                //textForChangePosition.Text = receiveForUpdate.position.ToString();
+
+                //listForChange.ItemsSource = receiveForUpdate.PossibleAnswer;
+
+
+
+               
+
+
+
+                
+
+
 
             }
 
@@ -295,6 +328,32 @@ namespace QuestionnaireOleshkina
 
 
 
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            var question = listiForQuestionnaire.SelectedItem as CreateQuestion;
+            MessageBox.Show(ConnectWithDataBase.IdQ.ToString());
+            connection.UpdateQuestion(ConnectWithDataBase.IdQ, question);
+
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listForChange_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            if(listBox.SelectedItem ==null) { return; }
+            possibleAnswerEdit.Text = listBox.SelectedItem.ToString();
+             
         }
     }
 }
