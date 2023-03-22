@@ -47,7 +47,7 @@
 
             <TextBlock FontSize="30" 
                        FontWeight="Black"
-
+                        
                  >Создание Анкеты</TextBlock>
             <TextBox Background="Wheat"
                      FontSize="25"
@@ -64,9 +64,20 @@
                       VerticalScrollBarVisibility="Auto"
                       >
             <StackPanel>
-                <TextBlock FontWeight="Black"
+                <WrapPanel>
+                    <TextBlock FontWeight="Black"
                            Name="addQuestionnire"
+                          
                     >Добавлные анкеты</TextBlock>
+                    <Label Width="255"></Label>
+                    
+                    <TextBlock MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"
+                       FontWeight="Black"
+                        Foreground="Red"
+                        >Назад</TextBlock>
+                    <Label Width="50"></Label>
+                    
+                </WrapPanel>
                 <ListBox Background="Wheat"
                          Height="434"
                          ScrollViewer.CanContentScroll="False"

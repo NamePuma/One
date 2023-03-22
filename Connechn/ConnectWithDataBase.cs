@@ -20,6 +20,8 @@ namespace Connechn
     public class ConnectWithDataBase
     {
 
+       
+
         public static string NameQuestionniry { get; set; }
 
         public static string NameStudent { get; set; }

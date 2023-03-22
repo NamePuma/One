@@ -32,6 +32,12 @@ namespace QuestionnaireOleshkina
 
     public partial class EnterInSistem : Page
     {
+        private enum Page
+        {
+            first, second
+        }
+        private Page page = Page.first;
+
         private enum TwoClick
         {
             One, Two
@@ -112,59 +118,65 @@ namespace QuestionnaireOleshkina
             string position = textBoxOnPositionQuestions.Text;
 
 
+            if(text == string.Empty || type == null || position == string.Empty) { MessageBox.Show("Нельзя"); return; }
 
-
-
-            CreateQuestion createQuestion = new CreateQuestion()
+            try
             {
-                Text = text,
-                position = int.Parse(position),
-                PossibleAnswer = createQuestions
+                CreateQuestion createQuestion = new CreateQuestion()
+                {
+                    Text = text,
+                    position = int.Parse(position),
+                    PossibleAnswer = createQuestions
 
-            };
+                };
 
 
 
-            if (enumId == ForIdQuestion.one)
-            {
 
-                connection.AddQuestionWithId(createQuestion, type, ConnectWithDataBase.IdQuestion);
+                if (enumId == ForIdQuestion.one)
+                {
+
+                    connection.AddQuestionWithId(createQuestion, type, ConnectWithDataBase.IdQuestion);
+                }
+                else if (enumId == ForIdQuestion.two)
+                {
+                    connection.AddQuestion(createQuestion, type);
+                }
+                if (ShowQuestion == null)
+                {
+
+                    ShowQuestion = new ObservableCollection<CreateQuestion>();
+                    listiForQuestionnaire.ItemsSource = ShowQuestion;
+                    ShowQuestion.Add(createQuestion);
+                    clickForListBox = TwoClick.Two;
+
+
+                }
+                else
+                {
+                    ShowQuestion.Add(createQuestion);
+                }
+
+
+
+
+                textOnCreateQuestions.Text = string.Empty;
+
+                comboBoxOnTypeQuestions.Text = string.Empty;
+
+                textBoxOnPositionQuestions.Text = string.Empty;
+
+                createQuestions.Clear();
+
+                PossibleAnswer.Text = string.Empty;
+
+
+
             }
-            else if (enumId == ForIdQuestion.two)
+            catch
             {
-                connection.AddQuestion(createQuestion, type);
+                MessageBox.Show("ЭЭЭЭ куда буквы пишешь"); return;
             }
-            if (ShowQuestion == null)
-            {
-
-                ShowQuestion = new ObservableCollection<CreateQuestion>();
-                listiForQuestionnaire.ItemsSource = ShowQuestion;
-                ShowQuestion.Add(createQuestion);
-                clickForListBox = TwoClick.Two;
-
-
-            }
-            else
-            {
-                ShowQuestion.Add(createQuestion);
-            }
-
-
-
-
-            textOnCreateQuestions.Text = string.Empty;
-
-            comboBoxOnTypeQuestions.Text = string.Empty;
-
-            textBoxOnPositionQuestions.Text = string.Empty;
-
-            listBoxForQuestions.ItemsSource = null;
-
-            PossibleAnswer.Text = string.Empty;
-
-
-
-
         }
 
 
@@ -193,6 +205,7 @@ namespace QuestionnaireOleshkina
             {
                 ForShow.Clear();
             }
+            textBoxForName.Text = string.Empty;
             enumId = ForIdQuestion.two;
             addQuestionnire.Text = "Вопросы";
 
@@ -333,18 +346,27 @@ namespace QuestionnaireOleshkina
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             var question = listiForQuestionnaire.SelectedItem as CreateQuestion;
-            MessageBox.Show(ConnectWithDataBase.IdQ.ToString());
+            
             connection.UpdateQuestion(ConnectWithDataBase.IdQ, question);
 
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
+            var crQu = (CreateQuestion)listiForQuestionnaire.SelectedItem;
+
+            crQu.PossibleAnswer.RemoveAt(listForChange.SelectedIndex);
 
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
+            var crQu =(CreateQuestion)listiForQuestionnaire.SelectedItem;
+
+            crQu.PossibleAnswer.Add(possibleAnswerEdit.Text);
+
+            possibleAnswerEdit.Text = string.Empty;
+
 
         }
 
@@ -354,6 +376,26 @@ namespace QuestionnaireOleshkina
             if(listBox.SelectedItem ==null) { return; }
             possibleAnswerEdit.Text = listBox.SelectedItem.ToString();
              
+        }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (page != Page.first)
+            {
+                MessageBox.Show("Не куда");
+            }
+            else
+            {
+                stackPanelNameQuetionniry.Visibility = Visibility.Visible;
+                stackPanelCreateQuesrion.Visibility = Visibility.Hidden;
+                stackPanelEditQuesrions.Visibility = Visibility.Hidden;
+                ForShow = connection.Receive(ConnectWithDataBase.teacher);
+                listiForQuestionnaire.ItemsSource = ForShow;
+                clickForListBox = TwoClick.One;
+
+
+
+            }
         }
     }
 }

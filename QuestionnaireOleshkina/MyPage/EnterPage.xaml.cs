@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Connechn;
 using Npgsql;
 using NpgsqlTypes;
+using static Connechn.ConnectWithDataBase;
 
 namespace QuestionnaireOleshkina
 {
@@ -49,7 +50,13 @@ namespace QuestionnaireOleshkina
         {
             InitializeComponent();
 
+
+
+
             Connect = connechn;
+
+           
+
 
             if (PageForStudent == null)
             {
