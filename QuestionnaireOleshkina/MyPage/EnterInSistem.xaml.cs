@@ -126,7 +126,8 @@ namespace QuestionnaireOleshkina
                 {
                     Text = text,
                     position = int.Parse(position),
-                    PossibleAnswer = createQuestions
+                    
+                    PossibleAnswer = new ObservableCollection<string>(createQuestions)
 
                 };
 
@@ -208,7 +209,8 @@ namespace QuestionnaireOleshkina
             textBoxForName.Text = string.Empty;
             enumId = ForIdQuestion.two;
             addQuestionnire.Text = "Вопросы";
-
+            block.Visibility = Visibility.Visible;
+            back.Foreground = Brushes.Red;
 
 
 
@@ -254,8 +256,10 @@ namespace QuestionnaireOleshkina
 
                 addQuestionnire.Text = "Вопросы";
 
-                clickForListBox = TwoClick.Two;
 
+                clickForListBox = TwoClick.Two;
+                back.Foreground = Brushes.Red;
+                block.Visibility = Visibility.Visible;
 
 
 
@@ -275,10 +279,13 @@ namespace QuestionnaireOleshkina
 
 
                 CreateQuestion receiveForUpdate = (CreateQuestion)list.SelectedItem;
-
-                ConnectWithDataBase.IdQ = receiveForUpdate.Id;
+                
                 ConnectWithDataBase.Index = list.SelectedIndex;
 
+                ConnectWithDataBase.IdQ = receiveForUpdate.Id;
+                block.Visibility = Visibility.Hidden;
+                
+             
 
                 //textForChangeQuestion.Text = receiveForUpdate.Text;
 
@@ -336,6 +343,7 @@ namespace QuestionnaireOleshkina
                     return; 
                 }
                 ShowQuestion.RemoveAt(ConnectWithDataBase.Index);
+                possibleAnswerEdit.Text = string.Empty; 
             }
             catch { MessageBox.Show("Ну нечего удалять"); }
 
@@ -347,25 +355,34 @@ namespace QuestionnaireOleshkina
         {
             var question = listiForQuestionnaire.SelectedItem as CreateQuestion;
             
+            
+
             connection.UpdateQuestion(ConnectWithDataBase.IdQ, question);
+
+            possibleAnswerEdit.Text = string.Empty;
+
+            MessageBox.Show("Отлишна");
 
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             var crQu = (CreateQuestion)listiForQuestionnaire.SelectedItem;
-
+           if(listForChange.SelectedIndex == -1) { return; }
             crQu.PossibleAnswer.RemoveAt(listForChange.SelectedIndex);
+            possibleAnswerEdit.Text = string.Empty;
+
 
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
             var crQu =(CreateQuestion)listiForQuestionnaire.SelectedItem;
-
+            if(possibleAnswerEdit.Text.Length < 1) { MessageBox.Show("Найн"); return; }
             crQu.PossibleAnswer.Add(possibleAnswerEdit.Text);
 
             possibleAnswerEdit.Text = string.Empty;
+            
 
 
         }
@@ -392,10 +409,18 @@ namespace QuestionnaireOleshkina
                 ForShow = connection.Receive(ConnectWithDataBase.teacher);
                 listiForQuestionnaire.ItemsSource = ForShow;
                 clickForListBox = TwoClick.One;
-
+                back.Foreground = Brushes.Gray;
 
 
             }
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            var question = listiForQuestionnaire.SelectedItem as CreateQuestion;
+
+            question.PossibleAnswer[listForChange.SelectedIndex] = possibleAnswerEdit.Text;
+
         }
     }
 }
