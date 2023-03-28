@@ -12,6 +12,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text.Json.Nodes;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Connechn
 {
@@ -243,7 +244,44 @@ namespace Connechn
 
         }
 
-
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        public ObservableCollection<From> RecieveForStudentOnFrom(ObservableCollection<From> From) 
+        {
+            if(From == null) { From = new ObservableCollection<From>(); }
+            NpgsqlCommand npgsqlCommand = autongsqlConnection.CreateCommand();
+            npgsqlCommand.CommandText = "Select * from \"From\"";
+            var result = npgsqlCommand.ExecuteReader();
+            if (!result.HasRows) { return null; }
+            while(result.Read()) 
+            {
+                From.Add(
+                    new From(result.GetInt32(0), result.GetString(1), result.GetString(2))
+                    );
+            }
+            result.Close();
+            return From;
+            
+            
+        }
+        public ObservableCollection<Question> ReceiveForStudentOnQuestion(ObservableCollection<Question> question, int filter = -1)
+        {   if(question == null) {  question = new ObservableCollection<Question>(); }
+            NpgsqlCommand npgsqlCommand = autongsqlConnection.CreateCommand();
+            npgsqlCommand.CommandText = "Select * from \"Question \" where \"From\" = @id";
+            npgsqlCommand.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, filter);
+            var result = npgsqlCommand.ExecuteReader();
+            if (!result.HasRows) { return null; }
+            while (result.Read())
+            {
+                question.Add
+                    (
+                    new Question(result.GetInt32(0), JsonConvert.DeserializeObject<CreateQuestion>(result.GetString(1)), result.GetInt32(2), result.GetString(3))
+                    );
+            } 
+            result.Close();
+            return question;
+        }
+       
 
 
     }

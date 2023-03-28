@@ -9,6 +9,22 @@
       Title="PageForStudent">
 
     <Grid Background="Purple">
-        
+        <StackPanel>
+            <TextBlock FontSize="30" 
+                       HorizontalAlignment="Center"
+                       Foreground="White">Доступные Анкеты</TextBlock>
+            <ListView Background="Purple"
+                      Name="listViewForQuestionnaire"
+                      ItemsSource="{Binding QuestionnaireForFrom}"
+                      SelectionChanged="SelectedQuestionnaire">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label Foreground="White" Content="{Binding Name}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

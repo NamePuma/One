@@ -8,17 +8,18 @@ namespace Connechn
 {
     public class From
     {
-        
+        private int id;
         private string name;
         private string teacher;
 
-      
+        public int Id { get { return id; } private set { id = value; } }
         public string Name { get { return name; } private set { name = value; } }
 
         public string Teacher { get { return teacher;} private set { teacher = value; } }
 
-        public From( string name, string teacher) {
-
+        public From(int id, string name, string teacher) 
+        {
+            Id = id;
             Name = name;
             Teacher = teacher;
         

@@ -140,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageWithQuestion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyPage\PageForTeacher.xaml.cs">
@@ -147,6 +151,9 @@
     </Compile>
     <Compile Include="PageForStudent.xaml.cs">
       <DependentUpon>PageForStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageWithQuestion.xaml.cs">
+      <DependentUpon>PageWithQuestion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -60,7 +60,7 @@ namespace QuestionnaireOleshkina
 
             if (PageForStudent == null)
             {
-                PageForStudent = new PageForStudent();
+                PageForStudent = new PageForStudent(Connect);
             }
         }
 
