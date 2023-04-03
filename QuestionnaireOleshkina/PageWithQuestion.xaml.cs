@@ -23,15 +23,16 @@ namespace QuestionnaireOleshkina
     public partial class PageWithQuestion : Page
     {
         private ConnectWithDataBase Connect { get; set; }
-        public ObservableCollection<Question> questionForSrudent { get; set; }
 
-        public ObservableCollection<Connechn.CreateQuestion> createQuestions { get; set; }
+        
         public PageWithQuestion(ConnectWithDataBase connect, From questionnaire)
         {
             InitializeComponent();
             Connect = connect;
-            questionForSrudent = connect.ReceiveForStudentOnQuestion(questionForSrudent, questionnaire.Id);
-            DataContext = this;
+            stackPanelForAnswer.Children.Add(new ShowAnswer());
+            
+            
+
            
         }
     }

@@ -9,23 +9,8 @@
       Title="PageWithQuestion">
 
     <Grid Background="Pink">
-        <ListView Background="Pink"
-                  Name="listViewForQuestion"
-                  ItemsSource="{Binding questionForSrudent}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <WrapPanel>
-                        <Label Content="{Binding Content.Text}"></Label>
-                        <Label Content="{Binding Content.position}"></Label>
-                            
-                    </WrapPanel>
-                        <StackPanel Name="stackPanelForAnswer">
-                            <Button>asffsaf</Button>
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="stackPanelForAnswer"></StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
