@@ -29,7 +29,13 @@ namespace QuestionnaireOleshkina
         {
             InitializeComponent();
             Connect = connect;
-            stackPanelForAnswer.Children.Add(new ShowAnswer());
+            ObservableCollection<Question> question = connect.ReceiveForStudentOnQuestion(null, questionnaire.Id);
+            foreach(Question quest in question)
+            {
+               
+                stackPanelForAnswer.Children.Add(new ShowAnswer(connect, quest));
+            }
+            
             
             
 

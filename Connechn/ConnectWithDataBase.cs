@@ -291,9 +291,7 @@ namespace Connechn
     {
         public int Id { get; set; }
         public string Text { get; set; }
-
         public int position { get; set; }
-
         public ObservableCollection<string> PossibleAnswer { get; set; }
 
     }
@@ -302,7 +300,5 @@ namespace Connechn
     {
         public int Id { get; set; }
         public string Text { get; set; }
-
-
     }
 }
